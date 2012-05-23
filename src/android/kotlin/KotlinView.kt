@@ -4,11 +4,13 @@ import android.view.View
 import android.app.Activity
 import android.view.View.OnClickListener as viewOnClickListener
 
-fun View.setOnClickListener(f: (View?) -> Unit) = this.setOnClickListener(object : viewOnClickListener {
-    public override fun onClick(p0: View?) {
-        f(p0)
-    }
-})
+fun View.setOnClickListener(f: (View?) -> Unit) {
+    this.setOnClickListener(object : viewOnClickListener {
+        public override fun onClick(p0: View?) {
+            f(p0)
+        }
+    })
+}
 
 class LazyView<T: View>(private val activity: Activity, val id: Int) {
 

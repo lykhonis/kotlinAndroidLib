@@ -17,7 +17,7 @@ Kotlin for Android
             setContentView(R.layout.main)
 
             buttonHello.v?.setOnClickListener {
-                view -> (view as? Button)?.setText("Hello World!")
+                buttonHello.v?.setText("Hello World!")
             }
         }
     }
