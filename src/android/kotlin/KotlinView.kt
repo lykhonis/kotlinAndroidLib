@@ -2,15 +2,15 @@ package android.kotlin
 
 import android.view.View
 import android.app.Activity
-import android.view.View.OnClickListener as viewOnClickListener
+import android.view.View.OnClickListener
 
-fun View.setOnClickListener(f: (View?) -> Unit) {
-    this.setOnClickListener(object : viewOnClickListener {
-        public override fun onClick(p0: View?) {
-            f(p0)
-        }
-    })
+fun viewOnClickListener(action: (View?) -> Unit) = object : OnClickListener {
+    public override fun onClick(p0: View?) {
+        action(p0)
+    }
 }
+
+fun View.setOnClickListener(action: (View?) -> Unit) = setOnClickListener(viewOnClickListener(action))
 
 class LazyView<T: View>(private val activity: Activity, val id: Int) {
 

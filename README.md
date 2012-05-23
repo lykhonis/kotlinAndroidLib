@@ -19,5 +19,12 @@ Kotlin for Android
             buttonHello.v?.setOnClickListener {
                 buttonHello.v?.setText("Hello World!")
             }
+
+            AlertDialog.Builder(this).setTitle("Title")
+                ?.setMessage("Hello World")
+                ?.setPositiveButton("Yes", {dialog, which -> })
+                ?.setNegativeButton("No", {dialog, which -> })
+                ?.create()
+                ?.show()
         }
     }
