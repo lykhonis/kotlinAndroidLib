@@ -16,9 +16,7 @@ Kotlin for Android
             super.onCreate(savedInstanceState)
             setContentView(R.layout.main)
 
-            buttonHello.v?.setOnClickListener {
-                buttonHello.v?.setText("Hello World!")
-            }
+            buttonHello.v?.setOnClickListener { buttonHello.v?.setText("Hello World!") }
 
             AlertDialog.Builder(this).setTitle("Title")
                 ?.setMessage("Hello World")
