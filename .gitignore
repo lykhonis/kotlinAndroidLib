@@ -1,7 +1,10 @@
 
 local.properties
 
-gen
+get
+
 lib/kotlin-runtime.jar
 
 .idea/workspace.xml
+
+out
