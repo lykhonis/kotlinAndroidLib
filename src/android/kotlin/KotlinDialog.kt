@@ -9,9 +9,7 @@ import android.app.AlertDialog.Builder
 
 fun dialogOnClickListener(action: (dialog: DialogInterface?, which: Int) -> Unit): OnClickListener =
     object : OnClickListener {
-        public override fun onClick(p0: DialogInterface?, p1: Int) {
-            action(p0, p1)
-        }
+        public override fun onClick(p0: DialogInterface?, p1: Int) = action(p0, p1)
     }
 
 fun Builder.setPositiveButton(textId: Int, action: (dialog: DialogInterface?, which: Int) -> Unit) =
