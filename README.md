@@ -5,24 +5,31 @@ Kotlin for Android
 
     import android.app.Activity
     import android.os.Bundle
-    import android.widget.Button
     import android.kotlin.*
+    import android.widget.Button
+    import android.app.AlertDialog
+    import android.content.Context.*
+    import android.content.SharedPreferences.Editor
 
     class HelloActivity : Activity() {
 
-        val buttonHello = findView<Button>(R.id.button_hello)
+        private val DIALOG_EXAMPLE = 1
 
-        protected override fun onCreate(savedInstanceState: Bundle?) {
+        public override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.main)
 
-            buttonHello.v?.setOnClickListener { buttonHello.v?.setText("Hello World!") }
+            val buttonHello = findView<Button>(R.id.button_hello)
 
-            AlertDialog.Builder(this).setTitle("Title")
+            buttonHello?.setOnClickListener { showDialog(DIALOG_EXAMPLE) }
+        }
+
+        public override fun onCreateDialog(id: Int) = when (id) {
+            DIALOG_EXAMPLE -> AlertDialog.Builder(this).setTitle("Title")
                 ?.setMessage("Hello World")
                 ?.setPositiveButton("Yes", {dialog, which -> })
                 ?.setNegativeButton("No", {dialog, which -> })
                 ?.create()
-                ?.show()
+            else -> super.onCreateDialog(id)
         }
     }
