@@ -8,8 +8,6 @@ Kotlin for Android
     import android.kotlin.*
     import android.widget.Button
     import android.app.AlertDialog
-    import android.content.Context.*
-    import android.content.SharedPreferences.Editor
 
     class HelloActivity : Activity() {
 
