@@ -11,15 +11,3 @@ fun viewOnClickListener(action: (View?) -> Unit) = object : OnClickListener {
 }
 
 fun View.setOnClickListener(action: (View?) -> Unit) = setOnClickListener(viewOnClickListener(action))
-
-class LazyView<T: View>(private val activity: Activity, val id: Int) {
-
-    private var store: T? = null
-
-    val v : T?
-        get() {
-            if (store == null)
-                store = activity.findViewById(id) as? T
-            return store;
-        }
-}
