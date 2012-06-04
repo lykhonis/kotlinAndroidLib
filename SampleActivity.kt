@@ -15,6 +15,7 @@ import android.content.IntentFilter
 import android.widget.TextView.OnEditorActionListener
 import android.widget.TextView
 import android.view.KeyEvent
+import android.widget.EditText
 
 class SampleActivity: Activity() {
 
@@ -27,13 +28,21 @@ class SampleActivity: Activity() {
         setContentView(R.layout.main)
 
         val buttonHello = findView<Button>(R.id.button_hello)
+        val edittext = findView<EditText>(R.id.edittext)
+
         buttonHello?.setOnClickListener { showDialog(DIALOG_EXAMPLE) }
 
-        registerReceiver()
-    }
+        edittext?.setOnEditorActionListener { v, actionId, event ->
+            when (actionId) {
+                EditorInfo.IME_NULL -> {
+                    Toast.makeText(this, "Enter", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                else -> false
+            }
+        }
 
-    val editorActionListener = OnEditorActionListener { v, actionId, event ->
-        return ""
+        registerReceiver()
     }
 
     protected override fun onDestroy() {

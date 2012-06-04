@@ -68,3 +68,13 @@ Small example of usage most of the functions. See [Sample Activity](https://gith
             return false
         }
 
+        myEditText?.setOnEditorActionListener /* OnEditorActionListener */ { v, actionId, event ->
+            return false
+        }
+
+* `getSystemService` with or without casting for known services:
+
+    Library allows call with casting for specific name of the service or call directly for known services:
+
+        val inputMethodManager = getSystemServiceAs<InputMethodManager>(Context.INPUT_METHOD_SERVICE)
+        val inputMethodManager = getInputMethodService()

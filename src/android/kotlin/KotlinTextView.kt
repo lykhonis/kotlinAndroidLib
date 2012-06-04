@@ -9,3 +9,7 @@ public inline fun OnEditorActionListener(action: (TextView?, Int, KeyEvent?) -> 
         public override fun onEditorAction(p0: TextView?, p1: Int, p2: KeyEvent?): Boolean = action(p0, p1, p2)
     }
 }
+
+public inline fun TextView.setOnEditorActionListener(action: (TextView?, Int, KeyEvent?) -> Boolean): Unit {
+    setOnEditorActionListener(OnEditorActionListener(action))
+}
