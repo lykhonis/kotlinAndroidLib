@@ -96,3 +96,12 @@ Small example of usage most of the functions. See [Sample Activity](https://gith
         handler.postAtFrontOfQueue { /* code here */ }
         handler.postAtTime(System.currentTimeMillis() + 100) { /* code here */ }
 
+* Wrap `SQLiteDatabase` functionality:
+
+        Pattern: beginTransaction -> setTransactionSuccessful -> endTransaction with try and finally:
+
+            sqliteDatabase.transaction {
+                // call any method of SQLiteDatabase without . or ?.
+                execSQL("ALTER TABLE table_1 RENAME TO table_2")
+            }
+
