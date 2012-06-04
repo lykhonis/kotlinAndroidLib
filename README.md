@@ -20,6 +20,8 @@ Linking to Android project
 Usage
 -----
 
+[.Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/master/SampleActivity.kt)
+
 * `findViewById` replacement for Activity and View:
 
         val `name of View` = findView<`type of View`>(`resource Id`)

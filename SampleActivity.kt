@@ -13,7 +13,7 @@ import android.content.Intent
 import android.widget.Toast
 import android.content.IntentFilter
 
-class Sample: Activity() {
+class SampleActivity: Activity() {
 
     private val ACTION_HELLO = "com.example.intent.action.HELLO"
 
