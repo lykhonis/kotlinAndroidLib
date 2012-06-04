@@ -33,7 +33,7 @@ class SampleActivity: Activity() {
     }
 
     val editorActionListener = OnEditorActionListener { v, actionId, event ->
-
+        return ""
     }
 
     protected override fun onDestroy() {

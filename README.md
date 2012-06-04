@@ -64,6 +64,7 @@ Small example of usage most of the functions. See [Sample Activity](https://gith
     Library just wraps `onEditorAction` call:
 
         val myEditorActionListener = OnEditorActionListener { v, actionId, event ->
-
+            /* handle actionId and/or event */
+            return false
         }
 
