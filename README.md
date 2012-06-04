@@ -24,8 +24,6 @@ Small example of usage most of the functions. See [Sample Activity](https://gith
 
 * `findViewById` replacement for Activity and View:
 
-        val `name of View` = findView<`type of View`>(`resource Id`)
-
         val myButton = findView<Button>(R.id.my_button)
 
 * `setOnClickListener` for Views:
