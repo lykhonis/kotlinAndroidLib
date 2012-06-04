@@ -16,6 +16,7 @@ import android.widget.TextView.OnEditorActionListener
 import android.widget.TextView
 import android.view.KeyEvent
 import android.widget.EditText
+import android.view.inputmethod.EditorInfo
 
 class SampleActivity: Activity() {
 
@@ -35,7 +36,8 @@ class SampleActivity: Activity() {
         edittext?.setOnEditorActionListener { v, actionId, event ->
             when (actionId) {
                 EditorInfo.IME_NULL -> {
-                    Toast.makeText(this, "Enter", Toast.LENGTH_SHORT).show()
+                    getInputMethodService()?.hideSoftInputFromInputMethod(edittext?.getWindowToken(), 0)
+                    Toast.makeText(this, "Enter", Toast.LENGTH_SHORT)?.show()
                     true
                 }
                 else -> false
@@ -67,10 +69,10 @@ class SampleActivity: Activity() {
 
     public override fun onCreateDialog(id: Int) = when (id) {
         DIALOG_EXAMPLE -> AlertDialog.Builder(this).setTitle("Title")
-            ?.setMessage("Want to say hello to world?")
-            ?.setPositiveButton("Yes", { dialog, which -> sendBroadcast(Intent(ACTION_HELLO)) })
-            ?.setNegativeButton("No", { dialog, which -> })
-            ?.create()
+        ?.setMessage("Want to say hello to world?")
+        ?.setPositiveButton("Yes", { dialog, which -> sendBroadcast(Intent(ACTION_HELLO)) })
+        ?.setNegativeButton("No", { dialog, which -> })
+        ?.create()
         else -> super.onCreateDialog(id)
     }
 }
