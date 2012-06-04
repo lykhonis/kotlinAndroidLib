@@ -6,7 +6,7 @@ The purpose of the library is to save time of writing code using Android SDK wra
 common functionality.
 
 Usage
--------
+-----
 
 1. Create regular or use existing Android project in IDEA
 2. Select `File` from menu and click on `Project Structure...`
