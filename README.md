@@ -1,33 +1,6 @@
 Kotlin for Android
 =============
 
-    package com.example
-
-    import android.app.Activity
-    import android.os.Bundle
-    import android.kotlin.*
-    import android.widget.Button
-    import android.app.AlertDialog
-
-    class HelloActivity : Activity() {
-
-        private val DIALOG_EXAMPLE = 1
-
-        public override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.main)
-
-            val buttonHello = findView<Button>(R.id.button_hello)
-
-            buttonHello?.setOnClickListener { showDialog(DIALOG_EXAMPLE) }
-        }
-
-        public override fun onCreateDialog(id: Int) = when (id) {
-            DIALOG_EXAMPLE -> AlertDialog.Builder(this).setTitle("Title")
-                ?.setMessage("Hello World")
-                ?.setPositiveButton("Yes", {dialog, which -> })
-                ?.setNegativeButton("No", {dialog, which -> })
-                ?.create()
-            else -> super.onCreateDialog(id)
-        }
-    }
+Helps not to write boilerplate code with instantiating abstract or interfaces instances.
+The purpose of the library is to save time of writing code using Android SDK wrapping as much as possible
+common functionality.
