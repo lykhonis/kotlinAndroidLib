@@ -30,8 +30,13 @@ Small example of usage most of the functions. See [Sample Activity](https://gith
 
 * `setOnClickListener` for Views:
 
-        myButton?.setOnClickListener { /* code here */ }
-        myButton?.setOnClickListener { view -> /* code here with view: View? argument */ }
+        myView?.setOnClickListener { /* code here */ }
+        myView?.setOnClickListener { view -> /* code here with view: View? argument */ }
+        val onClickListener = OnClickListener { view -> /* code here */ }
+
+        myView?.setOnTouchListener { /* code here */ }
+        myView?.setOnTouchListener { view, event -> /* code here with view: View? and event: MotionEvent? */ }
+        val onTouchListener = OnTouchListener { view, event -> /* code here */ }
 
 * `runOnUiThread` for Activities:
 
@@ -58,6 +63,8 @@ Small example of usage most of the functions. See [Sample Activity](https://gith
             ?.setPositiveButton("Yes", { dialog, which -> /* hello */ })
             ?.setNegativeButton("No", { dialog, which -> /* no hello now */ })
             ?.create()
+
+        val positiveButton = dialogOnClickListener { dialog, which -> }
 
 * Short definition of `OnEditorActionListener`:
 
