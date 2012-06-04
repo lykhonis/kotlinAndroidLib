@@ -34,9 +34,8 @@ Small example of usage most of the functions. See [Sample Activity](https://gith
         myView?.setOnClickListener { view -> /* code here with view: View? argument */ }
         val onClickListener = OnClickListener { view -> /* code here */ }
 
-        myView?.setOnTouchListener { /* code here */ }
-        myView?.setOnTouchListener { view, event -> /* code here with view: View? and event: MotionEvent? */ }
-        val onTouchListener = OnTouchListener { view, event -> /* code here */ }
+        myView?.setOnTouchListener { view, event -> false /* with view: View? and event: MotionEvent? */ }
+        val onTouchListener = OnTouchListener { view, event -> false }
 
 * `runOnUiThread` for Activities:
 
