@@ -17,20 +17,20 @@ import android.view.inputmethod.InputMethodManager
 import android.app.UiModeManager
 import android.app.DownloadManager
 
-public fun Context.getSystemServiceAs<T>(name: String): T? = getSystemService(name) as? T
+public inline fun Context.getSystemServiceAs<T>(name: String): T? = getSystemService(name) as? T
 
-public fun Context.getWindowService(): WindowManager? = getSystemServiceAs(Context.WINDOW_SERVICE)
-public fun Context.getLayoutInflaterService(): LayoutInflater? = getSystemServiceAs(Context.LAYOUT_INFLATER_SERVICE)
-public fun Context.getActivityService(): ActivityManager? = getSystemServiceAs(Context.ACTIVITY_SERVICE)
-public fun Context.getPowerService(): PowerManager? = getSystemServiceAs(Context.POWER_SERVICE)
-public fun Context.getAlarmService(): AlarmManager? = getSystemServiceAs(Context.ALARM_SERVICE)
-public fun Context.getNotificationService(): NotificationManager? = getSystemServiceAs(Context.NOTIFICATION_SERVICE)
-public fun Context.getKeyguardService(): KeyguardManager? = getSystemServiceAs(Context.KEYGUARD_SERVICE)
-public fun Context.getLocationService(): LocationManager? = getSystemServiceAs(Context.LOCATION_SERVICE)
-public fun Context.getSearchService(): SearchManager? = getSystemServiceAs(Context.SEARCH_SERVICE)
-public fun Context.getVibratorService(): Vibrator? = getSystemServiceAs(Context.VIBRATOR_SERVICE)
-public fun Context.getConnectivityService(): ConnectivityManager? = getSystemServiceAs(Context.CONNECTIVITY_SERVICE)
-public fun Context.getWifiService(): WifiManager? = getSystemServiceAs(Context.WIFI_SERVICE)
-public fun Context.getInputMethodService(): InputMethodManager? = getSystemServiceAs(Context.INPUT_METHOD_SERVICE)
-public fun Context.getUIModeService(): UiModeManager? = getSystemServiceAs(Context.UI_MODE_SERVICE)
-public fun Context.getDownloadService(): DownloadManager? = getSystemServiceAs(Context.DOWNLOAD_SERVICE)
+public inline fun Context.getWindowService(): WindowManager? = getSystemServiceAs(Context.WINDOW_SERVICE)
+public inline fun Context.getLayoutInflaterService(): LayoutInflater? = getSystemServiceAs(Context.LAYOUT_INFLATER_SERVICE)
+public inline fun Context.getActivityService(): ActivityManager? = getSystemServiceAs(Context.ACTIVITY_SERVICE)
+public inline fun Context.getPowerService(): PowerManager? = getSystemServiceAs(Context.POWER_SERVICE)
+public inline fun Context.getAlarmService(): AlarmManager? = getSystemServiceAs(Context.ALARM_SERVICE)
+public inline fun Context.getNotificationService(): NotificationManager? = getSystemServiceAs(Context.NOTIFICATION_SERVICE)
+public inline fun Context.getKeyguardService(): KeyguardManager? = getSystemServiceAs(Context.KEYGUARD_SERVICE)
+public inline fun Context.getLocationService(): LocationManager? = getSystemServiceAs(Context.LOCATION_SERVICE)
+public inline fun Context.getSearchService(): SearchManager? = getSystemServiceAs(Context.SEARCH_SERVICE)
+public inline fun Context.getVibratorService(): Vibrator? = getSystemServiceAs(Context.VIBRATOR_SERVICE)
+public inline fun Context.getConnectivityService(): ConnectivityManager? = getSystemServiceAs(Context.CONNECTIVITY_SERVICE)
+public inline fun Context.getWifiService(): WifiManager? = getSystemServiceAs(Context.WIFI_SERVICE)
+public inline fun Context.getInputMethodService(): InputMethodManager? = getSystemServiceAs(Context.INPUT_METHOD_SERVICE)
+public inline fun Context.getUIModeService(): UiModeManager? = getSystemServiceAs(Context.UI_MODE_SERVICE)
+public inline fun Context.getDownloadService(): DownloadManager? = getSystemServiceAs(Context.DOWNLOAD_SERVICE)
