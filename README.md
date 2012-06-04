@@ -20,17 +20,39 @@ Linking to Android project
 Usage
 -----
 
-* `findViewById` replacement:
+* `findViewById` replacement for Activity and View:
 
         val `name of View` = findView<`type of View`>(`resource Id`)
 
         val myButton = findView<Button>(R.id.my_button)
 
-* setOnClickListener for Views:
+* `setOnClickListener` for Views:
 
         myButton?.setOnClickListener { /* code here */ }
+        myButton?.setOnClickListener { view -> /* code here with view: View? argument */ }
 
-    or
+* `runOnUiThread` for Activities:
 
-        myButton?.setOnClickListener { view -> /* code here with view argument */ }
+    It can be used without the library:
 
+        runOnUiThread(runnable { /* action */})
+
+    Library just remove runnable call and can be used as:
+
+        runOnUiThread { /* action */ }
+
+* Short definition of `BroadcastReceiver`:
+
+    Library just wrap onReceive call:
+
+        val myBroadcastReceiver = BroadcastReceiver { context, intent ->
+            /* handle intent here */
+        }
+
+* `setPositiveButton` and `setNegativeButton` for AlertDialog.Builder:
+
+        AlertDialog.Builder(this).setTitle("Hello")
+            ?.setMessage("Want to say hello to world?")
+            ?.setPositiveButton("Yes", { dialog, which -> /* hello */ })
+            ?.setNegativeButton("No", { dialog, which -> /* no hello now */ })
+            ?.create()
