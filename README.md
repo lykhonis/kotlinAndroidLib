@@ -88,3 +88,11 @@ Small example of usage most of the functions. See [Sample Activity](https://gith
         listView.setOnItemClickListener { parent, view, position, id -> }
         listView.setOnItemLongClickListener { parent, view, position, id -> false }
 
+* Wrap calls without runnable() for `Handler`:
+
+        val handler = Handler()
+        handler.post { /* code here */ }
+        handler.postDelayed(100) { /* code here */ }
+        handler.postAtFrontOfQueue { /* code here */ }
+        handler.postAtTime(System.currentTimeMillis() + 100) { /* code here */ }
+
