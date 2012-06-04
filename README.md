@@ -22,15 +22,15 @@ Usage
 
 * `findViewById` replacement:
 
-    val `name of View` = findView<`type of View`>(`resource Id`)
+        val `name of View` = findView<`type of View`>(`resource Id`)
 
-    val myButton = findView<Button>(R.id.my_button)
+        val myButton = findView<Button>(R.id.my_button)
 
 * setOnClickListener for Views:
 
-    myButton?.setOnClickListener { /* code here */ }
+        myButton?.setOnClickListener { /* code here */ }
 
-or
+    or
 
-    myButton?.setOnClickListener { view -> /* code here with view argument */ }
+        myButton?.setOnClickListener { view -> /* code here with view argument */ }
 
