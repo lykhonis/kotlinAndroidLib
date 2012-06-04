@@ -20,7 +20,7 @@ Linking to Android project
 Usage
 -----
 
-[.Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/master/SampleActivity.kt)
+Small example of usage most of the functions. See [Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/master/SampleActivity.kt)
 
 * `findViewById` replacement for Activity and View:
 
