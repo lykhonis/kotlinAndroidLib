@@ -82,3 +82,9 @@ Small example of usage most of the functions. See [Sample Activity](https://gith
 
         val inputMethodManager = getSystemServiceAs<InputMethodManager>(Context.INPUT_METHOD_SERVICE)
         val inputMethodManager = getInputMethodService()
+
+* `AdapterView<out Adapter?>.setOnItemClickListener` and `AdapterView<out Adapter?>.setOnItemLongClickListener`:
+
+        listView.setOnItemClickListener { parent, view, position, id -> }
+        listView.setOnItemLongClickListener { parent, view, position, id -> false }
+
