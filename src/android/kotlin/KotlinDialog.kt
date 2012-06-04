@@ -7,19 +7,20 @@ import android.content.DialogInterface
 import android.app.AlertDialog
 import android.app.AlertDialog.Builder
 
-fun dialogOnClickListener(action: (dialog: DialogInterface?, which: Int) -> Unit): OnClickListener =
-    object : OnClickListener {
+public inline fun dialogOnClickListener(action: (dialog: DialogInterface?, which: Int) -> Unit): OnClickListener {
+    return object : OnClickListener {
         public override fun onClick(p0: DialogInterface?, p1: Int) = action(p0, p1)
     }
+}
 
-fun Builder.setPositiveButton(textId: Int, action: (dialog: DialogInterface?, which: Int) -> Unit) =
+public inline fun Builder.setPositiveButton(textId: Int, action: (dialog: DialogInterface?, which: Int) -> Unit): Builder? =
     setPositiveButton(textId, dialogOnClickListener(action))
 
-fun Builder.setPositiveButton(text: CharSequence, action: (dialog: DialogInterface?, which: Int) -> Unit) =
+public inline fun Builder.setPositiveButton(text: CharSequence, action: (dialog: DialogInterface?, which: Int) -> Unit): Builder? =
     setPositiveButton(text, dialogOnClickListener(action))
 
-fun Builder.setNegativeButton(textId: Int, action: (dialog: DialogInterface?, which: Int) -> Unit) =
+public inline fun Builder.setNegativeButton(textId: Int, action: (dialog: DialogInterface?, which: Int) -> Unit): Builder? =
     setNegativeButton(textId, dialogOnClickListener(action))
 
-fun Builder.setNegativeButton(text: CharSequence, action: (dialog: DialogInterface?, which: Int) -> Unit) =
+public inline fun Builder.setNegativeButton(text: CharSequence, action: (dialog: DialogInterface?, which: Int) -> Unit): Builder? =
     setNegativeButton(text, dialogOnClickListener(action))
