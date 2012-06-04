@@ -45,7 +45,7 @@ Small example of usage most of the functions. See [Sample Activity](https://gith
 
 * Short definition of `BroadcastReceiver`:
 
-    Library just wrap onReceive call:
+    Library just wraps `onReceive` call:
 
         val myBroadcastReceiver = BroadcastReceiver { context, intent ->
             /* handle intent here */
@@ -58,3 +58,12 @@ Small example of usage most of the functions. See [Sample Activity](https://gith
             ?.setPositiveButton("Yes", { dialog, which -> /* hello */ })
             ?.setNegativeButton("No", { dialog, which -> /* no hello now */ })
             ?.create()
+
+* Short definition of `OnEditorActionListener`:
+
+    Library just wraps `onEditorAction` call:
+
+        val myEditorActionListener = OnEditorActionListener { v, actionId, event ->
+
+        }
+

@@ -12,6 +12,9 @@ import android.content.Context
 import android.content.Intent
 import android.widget.Toast
 import android.content.IntentFilter
+import android.widget.TextView.OnEditorActionListener
+import android.widget.TextView
+import android.view.KeyEvent
 
 class SampleActivity: Activity() {
 
@@ -27,6 +30,10 @@ class SampleActivity: Activity() {
         buttonHello?.setOnClickListener { showDialog(DIALOG_EXAMPLE) }
 
         registerReceiver()
+    }
+
+    val editorActionListener = OnEditorActionListener { v, actionId, event ->
+
     }
 
     protected override fun onDestroy() {
