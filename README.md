@@ -98,10 +98,10 @@ Small example of usage most of the functions. See [Sample Activity](https://gith
 
 * Wrap `SQLiteDatabase` functionality:
 
-        Pattern: beginTransaction -> setTransactionSuccessful -> endTransaction with try and finally:
+    Pattern: beginTransaction -> setTransactionSuccessful -> endTransaction with try and finally:
 
-            sqliteDatabase.transaction {
-                // call any method of SQLiteDatabase without . or ?.
-                execSQL("ALTER TABLE table_1 RENAME TO table_2")
-            }
+        sqliteDatabase.transaction {
+            // call any method of SQLiteDatabase without . or ?.
+            execSQL("ALTER TABLE table_1 RENAME TO table_2")
+        }
 
