@@ -124,7 +124,7 @@ Small example of usage most of the functions. See [Sample Activity](https://gith
 * `ExecutorService`:
 
         executorService.execute { /* code here */ }
-        val future = executorService.submit<String> { /* code here */ "Result" }
-        val future = executorService.submit { /* code here and result Any?  */ }
-        val future = executorService.submit<String>("Result") { /* code here and result */ }
+        val future = executorService.submit<Any?> { /* code here and no result */ }
+        val future = executorService.submit<String?> { /* code here */ "Result" }
+        val future = executorService.submit<String?>("Result") { /* code here and result */ }
 

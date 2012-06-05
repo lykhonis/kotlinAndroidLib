@@ -1,22 +1,15 @@
 package com.example
 
 import android.app.Activity
-import android.os.Bundle
-import com.vlad.android.kotlin.*
-import android.widget.Button
 import android.app.AlertDialog
-import android.view.View.OnClickListener
-import android.view.View
-import android.content.BroadcastReceiver
-import android.content.Context
 import android.content.Intent
-import android.widget.Toast
 import android.content.IntentFilter
-import android.widget.TextView.OnEditorActionListener
-import android.widget.TextView
-import android.view.KeyEvent
-import android.widget.EditText
+import android.os.Bundle
 import android.view.inputmethod.EditorInfo
+import android.widget.Button
+import android.widget.EditText
+import android.widget.Toast
+import com.vlad.android.kotlin.*
 
 class SampleActivity: Activity() {
 
