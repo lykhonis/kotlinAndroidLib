@@ -5,6 +5,12 @@ Helps not to write boilerplate code with instantiating abstract or interfaces in
 The purpose of the library is to save time of writing code using Android SDK wrapping as much as possible
 common functionality.
 
+Warning
+-------
+
+This project is not relative to JetBrains company or their products. Use this project as is, no author nor anybody else
+is responsible for any damage.
+
 Linking to Android project
 --------------------------
 
