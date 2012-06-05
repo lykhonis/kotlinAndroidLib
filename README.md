@@ -26,7 +26,8 @@ Linking to Android project
 Usage
 -----
 
-Small example of usage most of the functions. See [Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/master/SampleActivity.kt)
+Small example of usage most of the functions and also some examples, for example, how to create Parcelable.
+See [Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/master/SampleActivity.kt)
 
 * `findViewById` replacement for Activity and View:
 

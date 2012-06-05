@@ -5,6 +5,8 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
+import android.os.Parcel
+import android.os.Parcelable
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.EditText
@@ -29,7 +31,7 @@ class SampleActivity: Activity() {
         edittext?.setOnEditorActionListener { v, actionId, event ->
             when (actionId) {
                 EditorInfo.IME_NULL -> {
-                    getInputMethodService()?.hideSoftInputFromInputMethod(edittext?.getWindowToken(), 0)
+                    getInputMethodService()?.hideSoftInputFromWindow(edittext?.getWindowToken(), 0)
                     Toast.makeText(this, "Enter", Toast.LENGTH_SHORT)?.show()
                     true
                 }
@@ -67,5 +69,30 @@ class SampleActivity: Activity() {
         ?.setNegativeButton("No", { dialog, which -> })
         ?.create()
         else -> super.onCreateDialog(id)
+    }
+}
+
+/** Working example of how to create Parcelable */
+class MyParcelable(val number: Int, val text: String?) : Parcelable {
+
+    public override fun writeToParcel(p0: Parcel?, p1: Int) {
+        if (p0 != null) {
+            p0.writeInt(number)
+            p0.writeString(text)
+        }
+    }
+
+    public override fun describeContents(): Int = 0
+
+    class object {
+
+        private fun create(parcel: Parcel) = MyParcelable(parcel.readInt(), parcel.readString())
+
+        val CREATOR = object : Parcelable.Creator<MyParcelable> {
+
+            public override fun createFromParcel(p0: Parcel?): MyParcelable? = create(p0.sure())
+
+            public override fun newArray(p0: Int): Array<MyParcelable?>? = array<MyParcelable?>()
+        }
     }
 }
