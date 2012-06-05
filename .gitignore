@@ -1,7 +1,7 @@
 
 local.properties
 
-get
+gen
 
 lib/kotlin-runtime.jar
 
