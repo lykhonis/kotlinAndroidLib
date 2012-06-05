@@ -69,11 +69,11 @@ Small example of usage most of the functions. See [Sample Activity](https://gith
 
         val myEditorActionListener = OnEditorActionListener { v, actionId, event ->
             /* handle actionId and/or event */
-            return false
+            false
         }
 
         myEditText?.setOnEditorActionListener /* OnEditorActionListener */ { v, actionId, event ->
-            return false
+            false
         }
 
 * `getSystemService` with or without casting for known services:
