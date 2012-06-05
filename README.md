@@ -98,10 +98,27 @@ Small example of usage most of the functions. See [Sample Activity](https://gith
 
 * Wrap `SQLiteDatabase` functionality:
 
-    Pattern: beginTransaction -> setTransactionSuccessful -> endTransaction with try and finally:
+    * Wrap pattern: beginTransaction -> setTransactionSuccessful -> endTransaction with try and finally:
 
         sqliteDatabase.transaction {
             // call any method of SQLiteDatabase without . or ?.
             execSQL("ALTER TABLE table_1 RENAME TO table_2")
         }
+
+    * Wrap pattern: cursor not null -> moveToFirst -> moveToNext in the do-while loop -> close with try and finally:
+
+        // query call with same arguments + last argument is a body in the loop
+        val collection /* of String */ = sqliteDatabase.query<String>("people", array("first_name"), null, null, null, null, null, null) {
+            /* Cursor namespace */
+            getString(getColumnIndexOrThrow("first_name"))
+        }
+
+    Support also queryWithFactory, rawQuery and rawQueryWithFactory.
+
+* `ExecutorService`:
+
+        executorService.execute { /* code here */ }
+        val future = executorService.submit<String> { /* code here */ "Result" }
+        val future = executorService.submit { /* code here and result Any?  */ }
+        val future = executorService.submit<String>("Result") { /* code here and result */ }
 
