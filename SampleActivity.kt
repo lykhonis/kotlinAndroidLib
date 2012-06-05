@@ -2,7 +2,7 @@ package com.example
 
 import android.app.Activity
 import android.os.Bundle
-import android.kotlin.*
+import com.vlad.android.kotlin.*
 import android.widget.Button
 import android.app.AlertDialog
 import android.view.View.OnClickListener
