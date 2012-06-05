@@ -125,12 +125,14 @@ See [Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/mast
     * Wrap ContentValues for insert and update:
 
             sqliteDatabase?.insert("table_name", null) {
+                // ContentValues namespace
                 put("column_text", "Hello")
                 put("column_int", 12.toInt())
                 put("column_float", 13.toFloat())
             }
 
             sqliteDatabase?.update("table_name", "ID = ?", array("3")) {
+                // ContentValues namespace
                 put("column_text", "Hello World")
             }
 
