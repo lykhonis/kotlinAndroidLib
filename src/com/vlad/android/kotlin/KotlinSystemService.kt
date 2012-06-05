@@ -1,4 +1,4 @@
-package android.kotlin
+package com.vlad.android.kotlin
 
 import android.content.Context
 import android.view.WindowManager

@@ -1,4 +1,4 @@
-package android.kotlin
+package com.vlad.android.kotlin
 
 import android.view.View
 import android.app.Activity
