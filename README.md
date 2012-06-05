@@ -21,7 +21,7 @@ Linking to Android project
 5. Choose category `sources` and click `Ok`
 6. Select and name the library `kotlinAndroidLib`
 7. Add new file to the library `^N` and choose classes.jar of kotlinAndroidLib
-8. Add import to your kotlin files in the android project `import android.kotlin.*`
+8. Add import to your kotlin files in the android project `import com.vlad.android.kotlin.*`
 
 Usage
 -----
