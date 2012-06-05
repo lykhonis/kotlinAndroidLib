@@ -8,6 +8,7 @@ import java.util.Collections
 import java.util.Collection
 import java.util.LinkedList
 import android.database.sqlite.SQLiteDatabase.CursorFactory
+import android.content.ContentValues
 
 public fun SQLiteDatabase.transaction(action: SQLiteDatabase.() -> Unit): Unit {
     beginTransaction()
@@ -65,4 +66,34 @@ public inline fun SQLiteDatabase.rawQuery<T>(sql: String?, selectionArgs: Array<
 public inline fun SQLiteDatabase.rawQueryWithFactory<T>(cursorFactory: CursorFactory?, sql: String?, selectionArgs: Array<String?>?,
                                              editTable: String?, action: Cursor.() -> T): Collection<out T> {
     return toCollection(rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable), action)
+}
+
+public inline fun SQLiteDatabase.insert(table: String?, nullColumnHack: String?, action: ContentValues.() -> Unit): Long {
+    val values = ContentValues()
+    values.action()
+    return insert(table, nullColumnHack, values)
+}
+
+public inline fun SQLiteDatabase.insertOrThrow(table: String?, nullColumnHack: String?, action: ContentValues.() -> Unit): Long {
+    val values = ContentValues()
+    values.action()
+    return insertOrThrow(table, nullColumnHack, values)
+}
+
+public inline fun SQLiteDatabase.insertWithOnConflict(table: String?, nullColumnHack: String?, conflictAlgorithm: Int, action: ContentValues.() -> Unit): Long {
+    val values = ContentValues()
+    values.action()
+    return insertWithOnConflict(table, nullColumnHack, values, conflictAlgorithm)
+}
+
+public inline fun SQLiteDatabase.update(table: String?, whereClause: String?, whereArgs: Array<String?>?, action: ContentValues.() -> Unit): Int {
+    val values = ContentValues()
+    values.action()
+    return update(table, values, whereClause, whereArgs)
+}
+
+public inline fun SQLiteDatabase.updateWithOnConflict(table: String?, whereClause: String?, whereArgs: Array<String?>?, conflictAlgorithm: Int, action: ContentValues.() -> Unit): Int {
+    val values = ContentValues()
+    values.action()
+    return updateWithOnConflict(table, values, whereClause, whereArgs, conflictAlgorithm)
 }
