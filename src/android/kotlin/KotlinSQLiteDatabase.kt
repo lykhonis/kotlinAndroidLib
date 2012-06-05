@@ -33,7 +33,7 @@ private fun toCollection<T>(cursor: Cursor?, action: Cursor.() -> T): Collection
     return Collections.unmodifiableCollection(list).sure()
 }
 
-public fun SQLiteDatabase.query<T>(distinct: Boolean, table: String?, columns: Array<String?>? = null, selection: String? = null,
+public inline fun SQLiteDatabase.query<T>(distinct: Boolean, table: String?, columns: Array<String?>? = null, selection: String? = null,
                                selectionArgs: Array<String?>? = null, groupBy: String? = null, having: String? = null, orderBy: String? = null,
                                limit: String? = null, action: Cursor.() -> T): Collection<out T> {
     return toCollection(query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit), action)
