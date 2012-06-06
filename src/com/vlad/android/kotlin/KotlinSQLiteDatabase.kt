@@ -10,7 +10,7 @@ import java.util.LinkedList
 import android.database.sqlite.SQLiteDatabase.CursorFactory
 import android.content.ContentValues
 
-public fun SQLiteDatabase.transaction(action: SQLiteDatabase.() -> Unit): Unit {
+public inline fun SQLiteDatabase.transaction(action: SQLiteDatabase.() -> Unit): Unit {
     beginTransaction()
     try {
         action()
