@@ -148,6 +148,12 @@ See [Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/mast
         sendBroadcast(Intent() { setAction(Intent.ACTION_DEFAULT) })
         startActivity(Intent(Intent.ACTION_VIEW) { setDataAndType(Uri.parse("http://example.com/audio.mp3"), "audio/mpeg") })
 
+* Wrap `IntentFilter`, now easy to create new `IntentFilter` without defininf new variable:
+
+        registerReceiver(broadcastReceiver, IntentFilter {
+            addAction(ACTION_HELLO)
+        })
+
 * Wrap `Bundle`, now easy to create new `Bundle` without defining new variable:
 
         Bundle { putString("result", "Some result!") }
@@ -164,4 +170,23 @@ See [Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/mast
 
         val myResultReceiver = ResultReceiver { code, data ->
             /* handle result here */
+        }
+
+* Wrap 'CREATOR' for `Parcelable`. Example of usage:
+
+    WARNING: It might wrong or not supported yet!
+
+        class MyParcelable(val number: Int, val text: String?) : Parcelable {
+
+            public override fun writeToParcel(p0: Parcel?, p1: Int) = if (p0 != null) {
+                p0.writeInt(number)
+                p0.writeString(text)
+            }
+
+            public override fun describeContents(): Int = 0
+
+            class object {
+
+                val CREATOR = CreateParcelable<MyParcelable> { MyParcelable(it.readInt(), it.readString()) }
+            }
         }
