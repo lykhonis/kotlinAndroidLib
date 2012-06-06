@@ -28,13 +28,13 @@ public inline fun Intent(action: String?, uri: Uri?, body: Intent.() -> Unit): I
     return intent
 }
 
-public inline fun Intent(packageContext: Context?, cls: Class<Any?>?, body: Intent.() -> Unit): Intent {
+public inline fun Intent(packageContext: Context?, cls: Class<*>?, body: Intent.() -> Unit): Intent {
     val intent = Intent(packageContext, cls)
     intent.body()
     return intent
 }
 
-public inline fun Intent(action: String?, uri: Uri?, packageContext: Context?, cls: Class<Any?>?, body: Intent.() -> Unit): Intent {
+public inline fun Intent(action: String?, uri: Uri?, packageContext: Context?, cls: Class<*>?, body: Intent.() -> Unit): Intent {
     val intent = Intent(action, uri, packageContext, cls)
     intent.body()
     return intent
