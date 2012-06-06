@@ -152,3 +152,16 @@ See [Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/mast
 
         Bundle { putString("result", "Some result!") }
 
+* Short definition of `ResultReceiver`:
+
+    Library just wraps `onReceiveResult` call:
+
+        val myResultReceiver = ResultReceiver(Hanlder()) { code, data ->
+            /* handle result here */
+        }
+
+    or automatically create new `Hanlder`
+
+        val myResultReceiver = ResultReceiver { code, data ->
+            /* handle result here */
+        }
