@@ -39,19 +39,15 @@ class SampleActivity: Activity() {
             }
         }
 
-        registerReceiver()
+        registerReceiver(broadcastReceiver, IntentFilter {
+            addAction(ACTION_HELLO)
+        })
     }
 
     protected override fun onDestroy() {
         super<Activity>.onDestroy()
 
         unregisterReceiver(broadcastReceiver)
-    }
-
-    private fun registerReceiver() {
-        val intentFilter = IntentFilter()
-        intentFilter.addAction(ACTION_HELLO)
-        registerReceiver(broadcastReceiver, intentFilter)
     }
 
     private val broadcastReceiver = BroadcastReceiver { context, intent ->
@@ -64,35 +60,10 @@ class SampleActivity: Activity() {
 
     public override fun onCreateDialog(id: Int) = when (id) {
         DIALOG_EXAMPLE -> AlertDialog.Builder(this).setTitle("Title")
-        ?.setMessage("Want to say hello to world?")
-        ?.setPositiveButton("Yes", { dialog, which -> sendBroadcast(Intent(ACTION_HELLO)) })
-        ?.setNegativeButton("No", { dialog, which -> })
-        ?.create()
+            ?.setMessage("Want to say hello to world?")
+            ?.setPositiveButton("Yes", { dialog, which -> sendBroadcast(ACTION_HELLO.intent) })
+            ?.setNegativeButton("No", { dialog, which -> })
+            ?.create()
         else -> super.onCreateDialog(id)
-    }
-}
-
-/** Working example of how to create Parcelable */
-class MyParcelable(val number: Int, val text: String?) : Parcelable {
-
-    public override fun writeToParcel(p0: Parcel?, p1: Int) {
-        if (p0 != null) {
-            p0.writeInt(number)
-            p0.writeString(text)
-        }
-    }
-
-    public override fun describeContents(): Int = 0
-
-    class object {
-
-        private fun create(parcel: Parcel) = MyParcelable(parcel.readInt(), parcel.readString())
-
-        val CREATOR = object : Parcelable.Creator<MyParcelable> {
-
-            public override fun createFromParcel(p0: Parcel?): MyParcelable? = create(p0.sure())
-
-            public override fun newArray(p0: Int): Array<MyParcelable?>? = array<MyParcelable?>()
-        }
     }
 }

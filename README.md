@@ -154,6 +154,10 @@ See [Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/mast
             /* namespace of Intent */
         }
 
+    or just convert `String` to `Intent`:
+
+        "my.application.intent.action.ACTION_MINE".intent
+
 * Wrap `IntentFilter`, now easy to create new `IntentFilter` without defining new variable:
 
         registerReceiver(broadcastReceiver, IntentFilter {
