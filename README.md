@@ -5,6 +5,8 @@ Helps not to write boilerplate code with instantiating abstract or interfaces in
 The purpose of the library is to save time of writing code using Android SDK wrapping as much as possible
 common functionality.
 
+The library uses one of the coolest feature of the Kotlin language `inline` almost everywhere, that prevents overhead code.
+
 Warning
 -------
 
