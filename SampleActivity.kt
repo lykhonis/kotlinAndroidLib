@@ -61,7 +61,7 @@ class SampleActivity: Activity() {
     public override fun onCreateDialog(id: Int) = when (id) {
         DIALOG_EXAMPLE -> AlertDialog.Builder(this).setTitle("Title")
             ?.setMessage("Want to say hello to world?")
-            ?.setPositiveButton("Yes", { dialog, which -> sendBroadcast(ACTION_HELLO.intent) })
+            ?.setPositiveButton("Yes", { dialog, which -> sendBroadcast(ACTION_HELLO.toIntent()) })
             ?.setNegativeButton("No", { dialog, which -> })
             ?.create()
         else -> super.onCreateDialog(id)
