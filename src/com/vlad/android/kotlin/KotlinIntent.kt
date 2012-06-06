@@ -24,8 +24,7 @@ public inline fun Intent(action: String?, body: Intent.() -> Unit): Intent {
 
 public inline fun String.toIntent(body: Intent.() -> Unit): Intent = Intent(this, body)
 
-public inline val String.intent: Intent
-    get() = Intent(this)
+public inline fun String.toIntent(): Intent = Intent(this)
 
 public inline fun Intent(action: String?, uri: Uri?, body: Intent.() -> Unit): Intent {
     val intent = Intent(action, uri)

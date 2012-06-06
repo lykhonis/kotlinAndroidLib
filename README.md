@@ -156,7 +156,7 @@ See [Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/mast
 
     or just convert `String` to `Intent`:
 
-        "my.application.intent.action.ACTION_MINE".intent
+        "my.application.intent.action.ACTION_MINE".toIntent()
 
 * Wrap `IntentFilter`, now easy to create new `IntentFilter` without defining new variable:
 
