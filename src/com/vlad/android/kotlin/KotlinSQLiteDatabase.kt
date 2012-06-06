@@ -20,13 +20,13 @@ public fun SQLiteDatabase.transaction(action: SQLiteDatabase.() -> Unit): Unit {
     }
 }
 
-private fun toCollection<T>(cursor: Cursor?, action: Cursor.() -> T): Collection<out T> {
+private fun toCollection<T>(cursor: Cursor?, create: Cursor.() -> T): Collection<out T> {
     val list = LinkedList<T>()
     if (cursor != null)
         try {
             if (cursor.moveToFirst())
                 do {
-                    list.add(cursor.action())
+                    list.add(cursor.create())
                 } while (cursor.moveToNext())
         } finally {
             cursor.close()
@@ -36,64 +36,64 @@ private fun toCollection<T>(cursor: Cursor?, action: Cursor.() -> T): Collection
 
 public inline fun SQLiteDatabase.query<T>(distinct: Boolean, table: String?, columns: Array<String?>? = null, selection: String? = null,
                                selectionArgs: Array<String?>? = null, groupBy: String? = null, having: String? = null, orderBy: String? = null,
-                               limit: String? = null, action: Cursor.() -> T): Collection<out T> {
-    return toCollection(query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit), action)
+                               limit: String? = null, create: Cursor.() -> T): Collection<out T> {
+    return toCollection(query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit), create)
 }
 
 public inline fun SQLiteDatabase.queryWithFactory<T>(cursorFactory: CursorFactory?, distinct: Boolean, table: String?,
                                 columns: Array<String?>? = null, selection: String? = null, selectionArgs: Array<String?>? = null,
                                 groupBy: String? = null, having: String? = null, orderBy: String? = null, limit: String? = null,
-                                action: Cursor.() -> T): Collection<out T> {
-    return toCollection(queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit), action)
+                                create: Cursor.() -> T): Collection<out T> {
+    return toCollection(queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit), create)
 }
 
 public inline fun SQLiteDatabase.query<T>(table: String?, columns: Array<String?>?, selection: String?,
                                           selectionArgs: Array<String?>?, groupBy: String?, having: String?, orderBy: String?,
-                                          limit: String?, action: Cursor.() -> T?): Collection<out T?> {
-    return toCollection(query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit), action)
+                                          limit: String?, create: Cursor.() -> T?): Collection<out T?> {
+    return toCollection(query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit), create)
 }
 
 public inline fun SQLiteDatabase.query<T>(table: String?, columns: Array<String?>?, selection: String?,
                                           selectionArgs: Array<String?>?, groupBy: String?, having: String?, orderBy: String?,
-                                          action: Cursor.() -> T): Collection<out T> {
-    return toCollection(query(table, columns, selection, selectionArgs, groupBy, having, orderBy), action)
+                                          create: Cursor.() -> T): Collection<out T> {
+    return toCollection(query(table, columns, selection, selectionArgs, groupBy, having, orderBy), create)
 }
 
-public inline fun SQLiteDatabase.rawQuery<T>(sql: String?, selectionArgs: Array<String?>?, action: Cursor.() -> T): Collection<out T> {
-    return toCollection(rawQuery(sql, selectionArgs), action)
+public inline fun SQLiteDatabase.rawQuery<T>(sql: String?, selectionArgs: Array<String?>?, create: Cursor.() -> T): Collection<out T> {
+    return toCollection(rawQuery(sql, selectionArgs), create)
 }
 
 public inline fun SQLiteDatabase.rawQueryWithFactory<T>(cursorFactory: CursorFactory?, sql: String?, selectionArgs: Array<String?>?,
-                                             editTable: String?, action: Cursor.() -> T): Collection<out T> {
-    return toCollection(rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable), action)
+                                             editTable: String?, create: Cursor.() -> T): Collection<out T> {
+    return toCollection(rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable), create)
 }
 
-public inline fun SQLiteDatabase.insert(table: String?, nullColumnHack: String?, action: ContentValues.() -> Unit): Long {
+public inline fun SQLiteDatabase.insert(table: String?, nullColumnHack: String?, create: ContentValues.() -> Unit): Long {
     val values = ContentValues()
-    values.action()
+    values.create()
     return insert(table, nullColumnHack, values)
 }
 
-public inline fun SQLiteDatabase.insertOrThrow(table: String?, nullColumnHack: String?, action: ContentValues.() -> Unit): Long {
+public inline fun SQLiteDatabase.insertOrThrow(table: String?, nullColumnHack: String?, create: ContentValues.() -> Unit): Long {
     val values = ContentValues()
-    values.action()
+    values.create()
     return insertOrThrow(table, nullColumnHack, values)
 }
 
-public inline fun SQLiteDatabase.insertWithOnConflict(table: String?, nullColumnHack: String?, conflictAlgorithm: Int, action: ContentValues.() -> Unit): Long {
+public inline fun SQLiteDatabase.insertWithOnConflict(table: String?, nullColumnHack: String?, conflictAlgorithm: Int, create: ContentValues.() -> Unit): Long {
     val values = ContentValues()
-    values.action()
+    values.create()
     return insertWithOnConflict(table, nullColumnHack, values, conflictAlgorithm)
 }
 
-public inline fun SQLiteDatabase.update(table: String?, whereClause: String?, whereArgs: Array<String?>?, action: ContentValues.() -> Unit): Int {
+public inline fun SQLiteDatabase.update(table: String?, whereClause: String?, whereArgs: Array<String?>?, create: ContentValues.() -> Unit): Int {
     val values = ContentValues()
-    values.action()
+    values.create()
     return update(table, values, whereClause, whereArgs)
 }
 
-public inline fun SQLiteDatabase.updateWithOnConflict(table: String?, whereClause: String?, whereArgs: Array<String?>?, conflictAlgorithm: Int, action: ContentValues.() -> Unit): Int {
+public inline fun SQLiteDatabase.updateWithOnConflict(table: String?, whereClause: String?, whereArgs: Array<String?>?, conflictAlgorithm: Int, create: ContentValues.() -> Unit): Int {
     val values = ContentValues()
-    values.action()
+    values.create()
     return updateWithOnConflict(table, values, whereClause, whereArgs, conflictAlgorithm)
 }

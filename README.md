@@ -143,3 +143,9 @@ See [Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/mast
         val future = executorService.submit<String?> { /* code here */ "Result" }
         val future = executorService.submit<String?>("Result") { /* code here and result */ }
 
+* Wrap `Intent`, now easy to create new Intent without defining new variable:
+
+        sendBroadcast(Intent() { setAction(Intent.ACTION_DEFAULT) })
+
+        startActivity(Intent(Intent.ACTION_VIEW) { setDataAndType(Uri.parse("http://example.com/audio.mp3"), "audio/mpeg") })
+
