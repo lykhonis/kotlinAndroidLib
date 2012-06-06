@@ -148,6 +148,12 @@ See [Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/mast
         sendBroadcast(Intent() { setAction(Intent.ACTION_DEFAULT) })
         startActivity(Intent(Intent.ACTION_VIEW) { setDataAndType(Uri.parse("http://example.com/audio.mp3"), "audio/mpeg") })
 
+    or make it even nicer if you have an action and it's a `String` value:
+
+        "my.application.intent.action.ACTION_MINE" toIntent {
+            /* namespace of Intent */
+        }
+
 * Wrap `IntentFilter`, now easy to create new `IntentFilter` without defining new variable:
 
         registerReceiver(broadcastReceiver, IntentFilter {
