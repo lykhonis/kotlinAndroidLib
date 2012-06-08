@@ -202,3 +202,9 @@ See [Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/mast
                 val CREATOR = CreateParcelable<MyParcelable> { MyParcelable(it.readInt(), it.readString()) }
             }
         }
+
+* Wrap `Thread`, `run` and call `start` method:
+
+    async {
+        // some code here
+    }
