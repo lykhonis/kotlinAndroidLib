@@ -205,6 +205,6 @@ See [Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/mast
 
 * Wrap `Thread`, `run` and call `start` method:
 
-    async {
-        // some code here
-    }
+        async {
+            // some code here
+        }
