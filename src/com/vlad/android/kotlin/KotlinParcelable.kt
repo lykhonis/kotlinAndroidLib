@@ -2,7 +2,6 @@ package com.vlad.android.kotlin
 
 import android.os.Parcelable
 import android.os.Parcel
-import jet.runtime.Intrinsic
 import java.util.ArrayList
 
 public inline fun CreateParcelable<T: Parcelable>(create: (Parcel) -> T?): Parcelable.Creator<T> {
