@@ -114,7 +114,7 @@ See [Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/mast
                 execSQL("ALTER TABLE table_1 RENAME TO table_2")
             }
 
-    * Wrap pattern: cursor not null -> moveToFirst -> moveToNext in the do-while loop -> close with try and finally:
+    * Wrap pattern: cursor not null -> moveToFirst -> moveToNext in do-while loop -> close with try and finally:
 
             // query call with same arguments + last argument is a body in the loop
             val collection /* of String */ = sqliteDatabase.query<String>("people", array("first_name"), null, null, null, null, null, null) {
@@ -137,6 +137,35 @@ See [Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/mast
                 // ContentValues namespace
                 put("column_text", "Hello World")
             }
+
+* Wrap `Cursor` pattern moveToFirst -> moveToNext in do-while loop:
+
+    Possible to call all functions on Cursor?, if Cursor? == null, returns empty collection
+
+        try {
+            val collection /* Of String? */ = cursor?.map {
+                getString(getColumnIndexOrThrow("first_name"))
+            }
+        } finally {
+            cursor?.close()
+        }
+
+    or
+
+        val collection = LinkedList<String?>()
+        try {
+            cursor?.mapTo(collection) {
+                getString(getColumnIndexOrThrow("first_name"))
+            }
+        } finally {
+            cursor?.close()
+        }
+
+    or
+
+        val collection /* Of String? */ = cursor?.mapAndClose {
+            getString(getColumnIndexOrThrow("first_name"))
+        }
 
 * `ExecutorService`:
 

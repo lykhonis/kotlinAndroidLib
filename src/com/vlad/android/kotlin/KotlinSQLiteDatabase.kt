@@ -20,52 +20,38 @@ public inline fun SQLiteDatabase.transaction(action: SQLiteDatabase.() -> Unit):
     }
 }
 
-private fun toCollection<T>(cursor: Cursor?, create: Cursor.() -> T): Collection<out T> {
-    val list = LinkedList<T>()
-    if (cursor != null)
-        try {
-            if (cursor.moveToFirst())
-                do {
-                    list.add(cursor.create())
-                } while (cursor.moveToNext())
-        } finally {
-            cursor.close()
-        }
-    return Collections.unmodifiableCollection(list).sure()
-}
-
 public inline fun SQLiteDatabase.query<T>(distinct: Boolean, table: String?, columns: Array<String?>? = null, selection: String? = null,
                                selectionArgs: Array<String?>? = null, groupBy: String? = null, having: String? = null, orderBy: String? = null,
-                               limit: String? = null, create: Cursor.() -> T): Collection<out T> {
-    return toCollection(query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit), create)
+                               limit: String? = null, create: Cursor.() -> T): Collection<T> {
+    return query(distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit).mapAndClose(create)
 }
 
 public inline fun SQLiteDatabase.queryWithFactory<T>(cursorFactory: CursorFactory?, distinct: Boolean, table: String?,
                                 columns: Array<String?>? = null, selection: String? = null, selectionArgs: Array<String?>? = null,
                                 groupBy: String? = null, having: String? = null, orderBy: String? = null, limit: String? = null,
                                 create: Cursor.() -> T): Collection<out T> {
-    return toCollection(queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit), create)
+    return queryWithFactory(cursorFactory, distinct, table, columns, selection, selectionArgs, groupBy, having, orderBy, limit).mapAndClose(create)
 }
 
 public inline fun SQLiteDatabase.query<T>(table: String?, columns: Array<String?>?, selection: String?,
                                           selectionArgs: Array<String?>?, groupBy: String?, having: String?, orderBy: String?,
-                                          limit: String?, create: Cursor.() -> T?): Collection<out T?> {
-    return toCollection(query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit), create)
+                                          limit: String?, create: Cursor.() -> T?): Collection<T?> {
+    return query(table, columns, selection, selectionArgs, groupBy, having, orderBy, limit).mapAndClose(create)
 }
 
 public inline fun SQLiteDatabase.query<T>(table: String?, columns: Array<String?>?, selection: String?,
                                           selectionArgs: Array<String?>?, groupBy: String?, having: String?, orderBy: String?,
-                                          create: Cursor.() -> T): Collection<out T> {
-    return toCollection(query(table, columns, selection, selectionArgs, groupBy, having, orderBy), create)
+                                          create: Cursor.() -> T): Collection<T> {
+    return query(table, columns, selection, selectionArgs, groupBy, having, orderBy).mapAndClose(create)
 }
 
-public inline fun SQLiteDatabase.rawQuery<T>(sql: String?, selectionArgs: Array<String?>?, create: Cursor.() -> T): Collection<out T> {
-    return toCollection(rawQuery(sql, selectionArgs), create)
+public inline fun SQLiteDatabase.rawQuery<T>(sql: String?, selectionArgs: Array<String?>?, create: Cursor.() -> T): Collection<T> {
+    return rawQuery(sql, selectionArgs).mapAndClose(create)
 }
 
 public inline fun SQLiteDatabase.rawQueryWithFactory<T>(cursorFactory: CursorFactory?, sql: String?, selectionArgs: Array<String?>?,
-                                             editTable: String?, create: Cursor.() -> T): Collection<out T> {
-    return toCollection(rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable), create)
+                                             editTable: String?, create: Cursor.() -> T): Collection<T> {
+    return rawQueryWithFactory(cursorFactory, sql, selectionArgs, editTable).mapAndClose(create)
 }
 
 public inline fun SQLiteDatabase.insert(table: String?, nullColumnHack: String?, create: ContentValues.() -> Unit): Long {
