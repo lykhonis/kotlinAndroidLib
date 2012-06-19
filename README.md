@@ -143,7 +143,7 @@ See [Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/mast
     Possible to call all functions on Cursor?, if Cursor? == null, returns empty collection
 
         try {
-            val collection /* Of String? */ = cursor?.map {
+            val collection /* Of String? */ = cursor.map {
                 getString(getColumnIndexOrThrow("first_name"))
             }
         } finally {
@@ -154,7 +154,7 @@ See [Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/mast
 
         val collection = LinkedList<String?>()
         try {
-            cursor?.mapTo(collection) {
+            cursor.mapTo(collection) {
                 getString(getColumnIndexOrThrow("first_name"))
             }
         } finally {
@@ -163,7 +163,7 @@ See [Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/mast
 
     or
 
-        val collection /* Of String? */ = cursor?.mapAndClose {
+        val collection /* Of String? */ = cursor.mapAndClose {
             getString(getColumnIndexOrThrow("first_name"))
         }
 
