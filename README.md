@@ -105,6 +105,15 @@ See [Sample Activity](https://github.com/vladlichonos/kotlinAndroidLib/blob/mast
         handler.postAtFrontOfQueue { /* code here */ }
         handler.postAtTime(System.currentTimeMillis() + 100) { /* code here */ }
 
+    Also easy to create handler with callback to handle messages:
+
+        val handler = Handler { message ->
+            when (message.what) {
+                1 -> handleMessage1(message.getData())
+                else -> false
+            }
+        }
+
 * Wrap `SQLiteDatabase` functionality:
 
     * Wrap pattern: beginTransaction -> setTransactionSuccessful -> endTransaction with try and finally:
