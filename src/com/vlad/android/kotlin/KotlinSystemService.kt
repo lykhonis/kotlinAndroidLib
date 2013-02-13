@@ -16,6 +16,7 @@ import android.net.wifi.WifiManager
 import android.view.inputmethod.InputMethodManager
 import android.app.UiModeManager
 import android.app.DownloadManager
+import android.media.AudioManager
 
 public inline fun Context.getSystemServiceAs<T>(name: String): T? = getSystemService(name) as? T
 
@@ -34,3 +35,4 @@ public inline fun Context.getWifiService(): WifiManager? = getSystemServiceAs(Co
 public inline fun Context.getInputMethodService(): InputMethodManager? = getSystemServiceAs(Context.INPUT_METHOD_SERVICE)
 public inline fun Context.getUIModeService(): UiModeManager? = getSystemServiceAs(Context.UI_MODE_SERVICE)
 public inline fun Context.getDownloadService(): DownloadManager? = getSystemServiceAs(Context.DOWNLOAD_SERVICE)
+public inline fun Context.getAudioManager(): AudioManager? = getSystemServiceAs(Context.AUDIO_SERVICE)
