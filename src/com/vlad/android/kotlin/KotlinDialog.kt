@@ -25,6 +25,12 @@ public inline fun Builder.setPositiveButton(textId: Int, action: (dialog: Dialog
 public inline fun Builder.setPositiveButton(text: CharSequence, action: (dialog: DialogInterface?, which: Int) -> Unit): Builder? =
     setPositiveButton(text, dialogOnClickListener(action))
 
+public inline fun Builder.setNeutralButton(textId: Int, action: (dialog: DialogInterface?, which: Int) -> Unit): Builder? =
+    setNeutralButton(textId, dialogOnClickListener(action))
+
+public inline fun Builder.setNeutralButton(text: CharSequence, action: (dialog: DialogInterface?, which: Int) -> Unit): Builder? =
+    setNeutralButton(text, dialogOnClickListener(action))
+
 public inline fun Builder.setNegativeButton(textId: Int, action: (dialog: DialogInterface?, which: Int) -> Unit): Builder? =
     setNegativeButton(textId, dialogOnClickListener(action))
 
