@@ -8,7 +8,7 @@ import android.app.AlertDialog
 import android.app.AlertDialog.Builder
 import android.content.DialogInterface.OnCancelListener
 import android.database.Cursor
-import android.widget.Adapter
+import android.widget.ListAdapter
 
 public inline fun dialogOnClickListener(action: (dialog: DialogInterface?, which: Int) -> Unit): OnClickListener {
     return object : OnClickListener {
@@ -46,11 +46,11 @@ public inline fun Builder.setCursor(cursor: Cursor?, labelColumn: String?, actio
     setCursor(cursor, dialogOnClickListener(action), labelColumn)
 
 public inline fun Builder.setSingleChoiceItems(itemsId: Int, checkedItem: Int, action: (dialog: DialogInterface?, which: Int) -> Unit): Builder? =
-    setSingleChoiceItems(itemsId, checkedItem, action)
+    setSingleChoiceItems(itemsId, checkedItem, dialogOnClickListener(action))
 
-public inline fun Builder.setSingleChoiceItems(cursor: Cursor, checkedItem: Int, action: (dialog: DialogInterface?, which: Int) -> Unit): Builder? =
-    setSingleChoiceItems(cursor, checkedItem, action)
+public inline fun Builder.setSingleChoiceItems(cursor: Cursor, checkedItem: Int, labelColumn: String, action: (dialog: DialogInterface?, which: Int) -> Unit): Builder? =
+    setSingleChoiceItems(cursor, checkedItem, labelColumn, dialogOnClickListener(action))
 
-public inline fun Builder.setSingleChoiceItems(adapter: Adapter, checkedItem: Int, action: (dialog: DialogInterface?, which: Int) -> Unit): Builder? =
-    setSingleChoiceItems(adapter, checkedItem, action)
+public inline fun Builder.setSingleChoiceItems(adapter: ListAdapter, checkedItem: Int, action: (dialog: DialogInterface?, which: Int) -> Unit): Builder? =
+    setSingleChoiceItems(adapter, checkedItem, dialogOnClickListener(action))
 
