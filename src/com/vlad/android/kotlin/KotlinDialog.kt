@@ -7,6 +7,7 @@ import android.content.DialogInterface
 import android.app.AlertDialog
 import android.app.AlertDialog.Builder
 import android.content.DialogInterface.OnCancelListener
+import android.database.Cursor
 
 public inline fun dialogOnClickListener(action: (dialog: DialogInterface?, which: Int) -> Unit): OnClickListener {
     return object : OnClickListener {
@@ -39,3 +40,6 @@ public inline fun Builder.setNegativeButton(text: CharSequence, action: (dialog:
 
 public inline fun Builder.setOnCancelListener(action: (dialog: DialogInterface?) -> Unit): Builder? =
     setOnCancelListener(dialogOnCancelListener(action))
+
+public inline fun Builder.setCursor(cursor: Cursor?, labelColumn: String?, action: (dialog: DialogInterface?, which: Int) -> Unit): Builder? =
+    setCursor(cursor, dialogOnClickListener(action), labelColumn)
