@@ -1,10 +1,6 @@
-
-local.properties
-
-gen
-
-lib/kotlin-runtime.jar
-
+.DS_Store
 .idea/workspace.xml
-
+local.properties
+lib/kotlin-runtime.jar
+gen
 out
